@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     public static Action OnPlayerDeath;
     public static Action OnEnemyDeath;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -78,8 +79,8 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        //Debug.Log("I am Dead!");
-        Destroy(gameObject);
+        // Debug.Log("I am Dead!");
+        gameObject.SetActive(false);
 
         if (this.CompareTag("Player"))
         {

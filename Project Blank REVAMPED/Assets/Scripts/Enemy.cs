@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     [SerializeField]
     private int damage = 5;
     [SerializeField]
@@ -25,27 +24,22 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player)
-        {
-            Swarm(); 
-        }
-        
+        Swarm();
     }
 
     private void SetEnemyValues()
     {
-        GetComponent<EnemyHealth>().SetHealth(data.hp, data.hp);
+        GetComponent<Health>().SetHealth(data.hp, data.hp);
         damage = data.damage;
         speed = data.speed;
     }
 
     private void Swarm()
     {
-        if(player != null)
+        if(player)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
-      
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -55,7 +49,7 @@ public class Enemy : MonoBehaviour
             if(collider.GetComponent<Health>() != null)
             {
                 collider.GetComponent<Health>().Damage(damage);
-                //this.GetComponent<EnemyHealth>().Damage(10000);
+                // this.GetComponent<Health>().Damage(10000);
             }
         }
     }
