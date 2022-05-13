@@ -17,6 +17,7 @@ public class Respawn : MonoBehaviour
     {}
     public void ResetTheGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
  

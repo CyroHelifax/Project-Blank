@@ -15,17 +15,18 @@ public class GameOverUI : MonoBehaviour
     void Start()
     {
         Health.OnPlayerDeath += ActivateGameObject;
+        Debug.Log("Logged Start P1 (1/4)");
         Health.OnEnemyDeath += CountScore;
         this.gameObject.SetActive(false);
-        // Debug.Log("Logged Start (1/4)");
+        Debug.Log("Logged Start P2 (1/4)");
     }
 
     void OnDestroy()
     {
         Health.OnPlayerDeath -= ActivateGameObject;
-        // Debug.Log("Logged Destroy P1 (2/4)");
+        Debug.Log("Logged Destroy P1 (2/4)");
         Health.OnEnemyDeath -= CountScore;
-        // Debug.Log("Logged Destroy P2 (2/4)");
+        Debug.Log("Logged Destroy P2 (2/4)");
     }
 
     public void ReturnToMenu()
@@ -33,7 +34,7 @@ public class GameOverUI : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void CountScore()
+    public void CountScore()
     {
         score++;
         Debug.Log("Score Changed (3/4)");
@@ -43,7 +44,7 @@ public class GameOverUI : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         scoreValueText.text = score.ToString();
-        // Debug.Log("Score Displayed (4/4)");
+        Debug.Log("Score Displayed (4/4)");
     }
 
 }

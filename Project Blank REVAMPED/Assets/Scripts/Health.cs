@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
     public static Action OnPlayerDeath;
     public static Action OnEnemyDeath;
+    public static Action OnPlayerLife;
 
 
     // Update is called once per frame
@@ -90,6 +91,23 @@ public class Health : MonoBehaviour
         else
         {
             OnEnemyDeath?.Invoke();
+        }
+
+        
+    }
+    
+    private void Life()
+    {
+        gameObject.SetActive(true);
+
+        if (this.CompareTag("Player"))
+        {
+            Time.timeScale = 1;
+            OnPlayerLife?.Invoke();
+        }
+        else
+        {
+            OnPlayerLife?.Invoke();
         }
     }
 }
